@@ -8,7 +8,8 @@ class DataModel {
     }
 
     getById(id) {
-        if (id === this.data.obj.id) {
+        let specId = id;
+        if (specId === this.data.obj.id) {
             return this.data.obj;
         }
         else {
@@ -25,7 +26,8 @@ class DataModel {
     }
 
     update(obj, id) {
-        if (id === obj.id) {
+        let specId = id;
+        if (specId === obj.id) {
             return true;
         }
         else{
@@ -34,7 +36,8 @@ class DataModel {
     }
 
     delete(id) {
-        if (id === this.data.obj.id) {
+        let specId = id;
+        if (specId === this.data.obj.id) {
             delete this.data.Obj;
             return true;
         }

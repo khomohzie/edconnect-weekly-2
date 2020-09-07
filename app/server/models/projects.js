@@ -13,7 +13,7 @@ class Project {
 
 class Projects extends DataModel {
     validate(obj) {
-        if ((obj.authors.value.length !== 0) && (obj.tags.value.length !== 0)) {
+        if ((obj.authors.length != 0) && (obj.tags.length != 0)) {
             if ((obj.isArray(obj.authors)) && (obj.isArray(obj.tags))) {
                 return true;
             }
