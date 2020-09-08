@@ -9,8 +9,8 @@ class DataModel {
 
     getById(id) {
         let specId = id;
-        if (specId === this.data.obj.id) {
-            return this.data.obj;
+        if (specId === obj.id) {
+            return obj;
         }
         else {
             return null;

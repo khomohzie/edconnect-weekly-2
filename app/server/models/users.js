@@ -19,7 +19,7 @@ class User {
 
 class Users extends DataModel {
     authenticate(email, password) {
-        if ((email === this.data.obj.email) && (password === this.data.obj.password)) {
+        if ((email === this.email) && (password === this.password)) {
             return true;
         }
         return false;
@@ -27,7 +27,7 @@ class Users extends DataModel {
 
     getByEmail(email) {
         const findEmail = this.data.find(
-            (this.data) => {
+            (this.data), => {
                 return this.data.email === email;
             }
         );
@@ -35,7 +35,7 @@ class Users extends DataModel {
 
     getByMatricNumber(matricNumber) {
         const findMatricNumber = this.data.find(
-            (this.data) => {
+            (this.data), => {
                 return this.data.matricNumber === matricNumber;
             }
         );
