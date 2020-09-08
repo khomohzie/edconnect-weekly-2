@@ -8,9 +8,8 @@ class DataModel {
     }
 
     getById(id) {
-        let specId = id;
-        if (specId === obj.id) {
-            return obj;
+        if (id == this.data.id) {
+            return this.data;
         }
         else {
             return null;
@@ -26,8 +25,8 @@ class DataModel {
     }
 
     update(obj, id) {
-        let specId = id;
-        if (specId === obj.id) {
+        if (id == this.data.id) {
+            this.data.push(obj);
             return true;
         }
         else{
@@ -36,13 +35,14 @@ class DataModel {
     }
 
     delete(id) {
-        let specId = id;
-        if (specId === this.data.obj.id) {
-            delete this.data.Obj;
-            return true;
-        }
-        else {
-            return false;
+        for (var i = this.data.length; i >= 0; i--) {
+            if (id == this.data.id) {
+                this.data.splice(i);
+                return true;
+            }
+            else {
+                return false;
+            }
         }
     }
 

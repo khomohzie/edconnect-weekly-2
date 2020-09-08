@@ -19,26 +19,26 @@ class User {
 
 class Users extends DataModel {
     authenticate(email, password) {
-        if ((email === this.email) && (password === this.password)) {
+        if ((email == this.email) && (password == this.password)) {
             return true;
         }
-        return false;
+        else {
+            return false;
+        }
     }
 
     getByEmail(email) {
-        const findEmail = this.data.find(
-            (this.data), => {
-                return this.data.email === email;
-            }
-        );
+        if (email == this.data.email) {
+            return this.data;
+        }
+        return null;
     }
 
     getByMatricNumber(matricNumber) {
-        const findMatricNumber = this.data.find(
-            (this.data), => {
-                return this.data.matricNumber === matricNumber;
-            }
-        );
+        if (matricNumber == this.data.matricNumber) {
+            return this.data;
+        }
+        return null;
     }
 
     validate(obj) {
