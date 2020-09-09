@@ -19,7 +19,15 @@ class User {
 
 class Users extends DataModel {
     authenticate(email, password) {
-        if ((email == this.email) && (password == this.password)) {
+        var found = false;
+        for(var i = 0; i < this.data.length; i++) {
+            if (this.data[i].email === email) {
+                if (this.data[i].password === password)
+                found = true;
+                break;
+            }
+        }
+        if (found == true) {
             return true;
         }
         else {

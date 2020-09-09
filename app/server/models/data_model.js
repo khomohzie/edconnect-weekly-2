@@ -9,7 +9,7 @@ class DataModel {
 
     getById(id) {
         if (id == this.data.id) {
-            return this.data;
+            return getFullName();
         }
         else {
             return null;
@@ -35,15 +35,13 @@ class DataModel {
     }
 
     delete(id) {
-        for (var i = this.data.length; i >= 0; i--) {
-            if (id == this.data.id) {
-                this.data.splice(i);
-                return true;
-            }
-            else {
-                return false;
-            }
+        if (id == this.data.id) {
+            this.data = this.data.filter(function (obj) {
+                return obj.id !== id;
+            });
+            return true;
         }
+        return false;
     }
 
     // this method will be overriden in the sub classes
