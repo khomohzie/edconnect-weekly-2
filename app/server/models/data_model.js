@@ -14,6 +14,7 @@ class DataModel {
 
     save(obj) {
         if (this.validate(obj)) {
+          //  obj.id = id();
             this.data.push(obj);
             return true;
         }
@@ -25,12 +26,15 @@ class DataModel {
         if (index < 0) {
             return false;
         }
-        this.data[index] = obj;
+        var old = this.data[index];
+        for (const prop in obj) {
+            old[prop] = obj[prop];
+        }
         return true;
     }
 
     delete(id) {
-        if (id == this.data.id) {
+        if (this.getById(id)) {
             this.data = this.data.filter(function (obj) {
                 return obj.id !== id;
             });
@@ -43,6 +47,11 @@ class DataModel {
     validate(obj) {
         return false;
     }
+}
+function id(){
+    return Math.random()
+                .toString(36)
+                .substring(2);
 }
 
 // Do not worry about the below for now; It is included so that we can test your code

@@ -4,7 +4,7 @@ class Project {
     constructor(id, name, abstract, authors, tags, createdBy) {
         this.id = id;
         this.name = name;
-        this.abstarct = abstract;
+        this.abstract = abstract;
         this.authors = authors;
         this.tags = tags;
         this.createdBy = createdBy;
@@ -13,14 +13,23 @@ class Project {
 
 class Projects extends DataModel {
     validate(obj) {
-        if ((obj.authors.length != 0) && (obj.tags.length != 0)) {
-            if ((Array.isArray(obj.authors)) && (Array.isArray(obj.tags))) {
-                return true;
-            }
+        var valid = true;
+        if (!Array.isArray(obj.authors) || !Array.isArray(obj.tags)) {
+            valid = false;
         }
-        else {
-            return false;
+        if (typeof obj.name != 'string' || obj.name.length < 1) {
+            valid = false;
         }
+        if (typeof obj.abstract != 'string' || obj.abstract.length < 1) {
+            valid = false;
+        }
+        if (typeof obj.createdBy != 'string' || obj.createdBy.length < 1) {
+            valid = false;
+        }
+        if (this.id === null) {
+            valid = false;
+        }
+        return valid;
     }
 }
 

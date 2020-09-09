@@ -49,21 +49,52 @@ class Users extends DataModel {
         return user ? user : null; 
     }
 
+   /* Validate that the none of the provided properties are empty
+    Validate that no user in the data array already has the specified email address
+    Validate that no user in the data array already has the specified matric number
+    Validate that the password is at least 7 characters in length
+    The method should return true if all of the tests pass and false otherwise */
     validate(obj) {
-        for (var i = 0; i < this.data.length; i++) {
-            if (obj.value.length == 0) {
-                if (obj.email === this.data.email) {
-                    if (obj.matricNumber === this.data.matricNumber) {
-                        if (obj.password.length == 7) {
-                            return false;
-                        }
-                    }
-                }
-            }
-            else {
-                return true;
-            }
+        var valid = true;
+        if (this.id = null) {
+            valid = false;
         }
+        if (typeof obj.firstname != 'string' || obj.firstname.length < 1) {
+            valid = false;
+        }
+        if (typeof obj.lastname != 'string' || obj.lastname.length < 1) {
+            valid = false;
+        }
+        if (typeof obj.email != 'string' || obj.email.length < 1) {
+            valid = false;
+        }
+        if (typeof obj.password != 'string' || obj.password.length < 1) {
+            valid = false;
+        }
+        if (typeof obj.program != 'string' || obj.program.length < 1) {
+            valid = false;
+        }
+        if (typeof obj.matricNumber != 'string' || obj.matricNumber.length < 1) {
+            valid = false;
+        }
+        if (typeof obj.graduationYear != 'string' || obj.graduationYear.length < 1) {
+            valid = false;
+        }
+        if (this.firstname = null) {
+            valid = false;
+        }
+        var user = this.getByEmail(obj.email);
+        if (user != null) {
+            valid = false;
+        }
+        var user = this.getByMatricNumber(obj.matricNumber);
+        if (user != null) {
+            valid = false;
+        }
+        if (obj.password.length < 7) {
+            valid = false;
+        }
+        return valid;
     }
 }
 
