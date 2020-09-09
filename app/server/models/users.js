@@ -49,11 +49,6 @@ class Users extends DataModel {
         return user ? user : null; 
     }
 
-   /* Validate that the none of the provided properties are empty
-    Validate that no user in the data array already has the specified email address
-    Validate that no user in the data array already has the specified matric number
-    Validate that the password is at least 7 characters in length
-    The method should return true if all of the tests pass and false otherwise */
     validate(obj) {
         var valid = true;
         if (this.id = null) {

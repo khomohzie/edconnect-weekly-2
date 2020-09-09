@@ -14,7 +14,6 @@ class DataModel {
 
     save(obj) {
         if (this.validate(obj)) {
-          //  obj.id = id();
             this.data.push(obj);
             return true;
         }
@@ -47,11 +46,6 @@ class DataModel {
     validate(obj) {
         return false;
     }
-}
-function id(){
-    return Math.random()
-                .toString(36)
-                .substring(2);
 }
 
 // Do not worry about the below for now; It is included so that we can test your code
