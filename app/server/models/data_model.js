@@ -8,12 +8,8 @@ class DataModel {
     }
 
     getById(id) {
-        if (id == this.data.id) {
-            return getFullName();
-        }
-        else {
-            return null;
-        }
+        var user = this.data.find(user => user.id === id);
+        return user ? user : null;
     }
 
     save(obj) {
@@ -25,13 +21,12 @@ class DataModel {
     }
 
     update(obj, id) {
-        if (id == this.data.id) {
-            this.data.push(obj);
-            return true;
-        }
-        else{
+        var index = this.data.findIndex(user => user.id === id);
+        if (index < 0) {
             return false;
         }
+        this.data[index] = obj;
+        return true;
     }
 
     delete(id) {

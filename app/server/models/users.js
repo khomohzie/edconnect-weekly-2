@@ -21,8 +21,7 @@ class Users extends DataModel {
     authenticate(email, password) {
         var found = false;
         for(var i = 0; i < this.data.length; i++) {
-            if (this.data[i].email === email) {
-                if (this.data[i].password === password)
+            if ((this.data[i].email === email) && (this.data[i].password === password)) {
                 found = true;
                 break;
             }
@@ -36,17 +35,18 @@ class Users extends DataModel {
     }
 
     getByEmail(email) {
-        if (email == this.data.email) {
-            return this.data;
-        }
-        return null;
+        var user = this.data.find(function (user) {
+           if (user.email === email) {
+               return true;
+           }
+           return false;
+        });
+        return user ? user : null;  // if what's on the left is true, return the right otherwise return what's after the colon (tenary operator)
     }
 
     getByMatricNumber(matricNumber) {
-        if (matricNumber == this.data.matricNumber) {
-            return this.data;
-        }
-        return null;
+        var user  = this.data.find(user => user.matricNumber === matricNumber);
+        return user ? user : null; 
     }
 
     validate(obj) {
